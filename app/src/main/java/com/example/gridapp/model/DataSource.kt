@@ -19,4 +19,5 @@ object DataSource {
         Topic(R.string.painting, 172, R.drawable.painting),
         Topic(R.string.photography, 321, R.drawable.photography),
         Topic(R.string.tech, 118, R.drawable.tech)
+    )
 }
