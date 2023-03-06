@@ -6,6 +6,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -43,12 +46,27 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun GridApp() {
-    CourseCard(DataSource.topics[12])
+    CourseGrid(DataSource.topics)
 }
 
 
+
 @Composable
-fun CourseCard(topic: Topic){
+fun CourseGrid(topicList: List<Topic>, modifier: Modifier = Modifier){
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2)
+    ) {
+        items(topicList){
+            CourseCard(topic = it)
+        }
+    }
+}
+
+
+
+
+@Composable
+fun CourseCard(topic: Topic, modifier:Modifier = Modifier){
     Card(
         modifier = Modifier
             .padding(8.dp),
@@ -96,7 +114,6 @@ fun CourseCard(topic: Topic){
 
                 }
             }
-
         }
     }
 }
